@@ -1,6 +1,6 @@
 # FormsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6. It contains the Angular 2 Dynamic Forms Cookbook (https://angular.io/docs/ts/latest/cookbook/dynamic-form.html) which I'm extending with extra controls. All of this just for learning purposes.
 
 ## Development server
 
