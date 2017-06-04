@@ -1,0 +1,26 @@
+<div [formGroup]="form" [ngClass]="{'has-danger': !isValid, 'has-success': isSuccess}">
+  <label [attr.for]="question.key">{{question.label}}</label>
+
+  <div [ngSwitch]="question.controlType">
+
+    <!--Texbox-->
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+            [id]="question.key" [type]="question.type" class="form-control">
+
+    <!--Dropdown -->
+    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key" class="form-control">
+      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+    <!--Checkbox -->
+    <input [id]="question.key" 
+      *ngSwitchCase="'checkbox'" 
+      [formControlName]="question.key" 
+      [name]="question.key" 
+      [checked]='question.checked' 
+      [type]="question.controlType" class="form-check"
+      (change)="toggleCheckBox($event, question.key)"/>
+  </div> 
+
+  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>
