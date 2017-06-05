@@ -18,9 +18,10 @@ export class QuestionService {
           {key: 'solid',  value: 'Solid'},
           {key: 'great',  value: 'Great'},
           {key: 'good',   value: 'Good'},
-          {key: 'unproven', value: 'Unproven'}
+          {key: 'unproven', value: 'Unproven'},
         ],
-        order: 3
+        order: 3,
+        helptext: 'Show me what you`re capable of'
       }),
       new TextboxQuestion({
         key: 'firstName',
@@ -28,7 +29,8 @@ export class QuestionService {
         value: 'Bombasto',
         required: true,
         order: 1,
-        minLength: 10
+        minLength: 10,        
+        helptext: 'Do you remember what your mom called you?'
       }),
       new TextboxQuestion({
         key: 'emailAddress',

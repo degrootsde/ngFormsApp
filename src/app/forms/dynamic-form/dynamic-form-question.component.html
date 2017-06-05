@@ -22,5 +22,9 @@
       [type]="question.controlType" class="form-check"
       (change)="toggleCheckBox($event, question.key)"/>
   </div> 
+<<<<<<< HEAD
+=======
+  <small class="form-text text-muted">{{question.helptext}}</small>
+>>>>>>> 3d5ea634a3a29ffd4b5be3455ef5f9d65ed1f634
   <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
 </div>
