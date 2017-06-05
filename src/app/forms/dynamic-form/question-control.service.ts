@@ -2,6 +2,7 @@ import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { QuestionBase } from './question-base';
+import { TextboxQuestion} from './question-textbox';
 
 @Injectable()
 export class QuestionControlService {
@@ -13,6 +14,15 @@ export class QuestionControlService {
     questions.forEach(question => {
       group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
                                               : new FormControl(question.value || '');
+      
+      if(question instanceof TextboxQuestion){
+        let tbQuestion: TextboxQuestion = question; 
+        group[tbQuestion.key] = tbQuestion.minLength ? 
+          new FormControl(tbQuestion.value || '', Validators.minLength(tbQuestion.minLength)) : new FormControl(question.minLength || 0);
+      }
+      // group[question.key] = question.minLength ? new FormControl(question.value || '', Validators.minLength(question.minLength))
+      //                                         : new FormControl(question.value || '');
+      
     });
     return new FormGroup(group);
   }

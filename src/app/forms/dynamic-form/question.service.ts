@@ -27,14 +27,16 @@ export class QuestionService {
         label: 'First name',
         value: 'Bombasto',
         required: true,
-        order: 1
+        order: 1,
+        minLength: 10
       }),
       new TextboxQuestion({
         key: 'emailAddress',
         label: 'Email',
         type: 'email',
         required: true,
-        order: 2
+        order: 2,
+        validationRegex: '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
       }),
       new CheckboxQuestion({
         key: 'hired',
