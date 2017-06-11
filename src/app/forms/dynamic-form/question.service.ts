@@ -29,7 +29,6 @@ export class QuestionService {
         value: 'Bombasto',
         required: true,
         order: 1,
-        minLength: 10,        
         helptext: 'Do you remember what your mom called you?'
       }),
       new TextboxQuestion({
@@ -37,14 +36,23 @@ export class QuestionService {
         label: 'Email',
         type: 'email',
         required: true,
-        order: 2,
-        validationRegex: '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+        order: 2
+      }),
+      new TextboxQuestion({
+        key: 'zipCode',
+        label: 'Zip code (dutch format)',
+        value: '',
+        required: true,
+        order: 3,
+        validationRegex: '[1-9]{4}[A-Z]{2}',     
+        helptext: 'Zip your address (1234AA)?'
       }),
       new CheckboxQuestion({
         key: 'hired',
         label: 'Hired',
         type: 'checkbox',
         checked: true,
+        required: true,
         order: 4
       })
     ];

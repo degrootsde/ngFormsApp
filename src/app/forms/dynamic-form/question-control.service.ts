@@ -10,20 +10,35 @@ export class QuestionControlService {
 
   toFormGroup(questions: QuestionBase<any>[] ) {
     let group: any = {};
-
+    
     questions.forEach(question => {
-      group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-                                              : new FormControl(question.value || '');
+      var validators = [];
+
+      if(question.required)
+      validators.push(Validators.required);
+
       
       if(question instanceof TextboxQuestion){
         let tbQuestion: TextboxQuestion = question; 
-        group[tbQuestion.key] = tbQuestion.minLength ? 
-          new FormControl(tbQuestion.value || '', Validators.minLength(tbQuestion.minLength)) : new FormControl(question.minLength || 0);
+        
+        if(tbQuestion.minLength !== undefined || tbQuestion.minLength !== 0)
+          {validators.push(Validators.minLength(tbQuestion.minLength))}
+        if(tbQuestion.maxLength !== undefined || tbQuestion.maxLength !== 0)
+          {validators.push(Validators.maxLength(tbQuestion.maxLength))}
+        
+        if(tbQuestion.type == 'email'){
+          validators.push(Validators.email);
+        }
+        
+        if(tbQuestion.validationRegex != ""){
+          validators.push(Validators.pattern(tbQuestion.validationRegex));
+        }
       }
-      // group[question.key] = question.minLength ? new FormControl(question.value || '', Validators.minLength(question.minLength))
-      //                                         : new FormControl(question.value || '');
+
+      group[question.key] = new FormControl(question.value || '', validators);      
       
     });
+
     return new FormGroup(group);
   }
 }
