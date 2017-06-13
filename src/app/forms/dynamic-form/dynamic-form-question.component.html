@@ -1,6 +1,6 @@
-<div [formGroup]="form" [ngClass]="{'has-danger': !isValid, 'has-success': isSuccess}">
+<div [formGroup]="form" class="form-group" [ngClass]="{'has-danger': !isValid, 'has-success': isSuccess}">
 
-  <label [attr.for]="question.key">{{question.label}}</label>
+  <label class="form-control-label" [attr.for]="question.key">{{question.label}}</label>
 
   <div [ngSwitch]="question.controlType">
 
@@ -21,8 +21,17 @@
       [checked]='question.checked' 
       [type]="question.controlType" class="form-check"
       (change)="toggleCheckBox($event, question.key)"/>
-  </div> 
-
+  </div>
+  
+  <div class="form-control-feedback">
+    <div *ngFor="let error of errors">
+      {{error}}&nbsp;
+    </div>
+  </div>
   <small class="form-text text-muted">{{question.helptext}}</small>
-  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+
+
+
+  
+   
 </div>

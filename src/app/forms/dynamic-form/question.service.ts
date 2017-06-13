@@ -13,6 +13,7 @@ export class QuestionService {
     let questions: QuestionBase<any>[] = [
       new DropdownQuestion({
         key: 'brave',
+        value: 'good',
         label: 'Bravery Rating',
         options: [
           {key: 'solid',  value: 'Solid'},
@@ -34,6 +35,7 @@ export class QuestionService {
       new TextboxQuestion({
         key: 'emailAddress',
         label: 'Email',
+        value: 'bombastootje@gmail.com',
         type: 'email',
         required: true,
         order: 2
@@ -41,7 +43,7 @@ export class QuestionService {
       new TextboxQuestion({
         key: 'zipCode',
         label: 'Zip code (dutch format)',
-        value: '',
+        value: '1234AA',
         required: true,
         order: 3,
         validationRegex: '[1-9]{4}[A-Z]{2}',     
@@ -52,7 +54,6 @@ export class QuestionService {
         label: 'Hired',
         type: 'checkbox',
         checked: true,
-        required: true,
         order: 4
       })
     ];

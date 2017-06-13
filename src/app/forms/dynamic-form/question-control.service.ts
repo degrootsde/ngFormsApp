@@ -25,9 +25,8 @@ export class QuestionControlService {
           {validators.push(Validators.minLength(tbQuestion.minLength))}
         if(tbQuestion.maxLength !== undefined || tbQuestion.maxLength !== 0)
           {validators.push(Validators.maxLength(tbQuestion.maxLength))}
-        
         if(tbQuestion.type == 'email'){
-          validators.push(Validators.email);
+          validators.push(Validators.email);  
         }
         
         if(tbQuestion.validationRegex != ""){
