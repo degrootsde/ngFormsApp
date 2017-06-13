@@ -12,7 +12,7 @@ export class QuestionControlValidatorService {
     if(errors.email)
       {resourceMessage.push("Wrong email format")}
     if(errors.pattern)
-      {resourceMessage.push("Error in haracter sequence")}
+      {resourceMessage.push("Error in character sequence")}
     return resourceMessage;
   }
 }
