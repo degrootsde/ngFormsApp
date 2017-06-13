@@ -13,6 +13,10 @@ export class QuestionControlValidatorService {
       {resourceMessage.push("Wrong email format")}
     if(errors.pattern)
       {resourceMessage.push("Error in character sequence")}
+    if(errors.minLength)
+      {resourceMessage.push("To few charachters")}
+    if(errors.maxLength)
+      {resourceMessage.push("To many characters")}
     return resourceMessage;
   }
 }
