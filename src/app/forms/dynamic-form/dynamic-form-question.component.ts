@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup }        from '@angular/forms';
 import { QuestionBase }     from './question-base';
 import { QuestionControlValidatorService } from './question-control-validator.service';
+import { MultiCheckBoxQuestion } from './question-multi-checkbox'; 
 
 @Component({
   selector: 'df-question',
@@ -29,5 +30,16 @@ export class DynamicFormQuestionComponent {
   toggleCheckBox(event, key): void{
     
     this.form.value[key] = event.target.checked; 
+  }
+  toggleMultiCheckbox(target, questionKey, controlKey)
+  {
+    var q = this.question as MultiCheckBoxQuestion;
+    q.options.forEach(
+      option => {if(option.key == controlKey){
+        option.checked = !option.checked;
+      }}
+    )
+    this.form.value[questionKey] =  q.options;
+    
   }
 }

@@ -3,6 +3,7 @@ import { DropdownQuestion } from './question-dropdown';
 import { QuestionBase }     from './question-base';
 import { TextboxQuestion }  from './question-textbox';
 import { CheckboxQuestion}  from './question-checkbox';
+import { MultiCheckBoxQuestion } from './question-multi-checkbox';
 
 @Injectable()
 export class QuestionService {
@@ -55,6 +56,19 @@ export class QuestionService {
         type: 'checkbox',
         checked: true,
         order: 4
+      }),
+      new MultiCheckBoxQuestion({
+        key: 'goals',
+        value: ['villanfree'],
+        label: 'Goals as a Hero',
+        options: [
+          { checked: true, key: 'villainfree',  value: 'To live in a villain free world'},
+          { checked: false, key: 'stronger',  value: 'To get stronger every day'},
+          { checked: false, key: 'skills',   value: 'To gain more skills every day'},
+          { checked: false, key: 'teach', value: 'To teach young hero`s'}
+        ],
+        order: 6,
+        helptext: 'What would you like to accomplish in the long run?'
       })
     ];
     return questions.sort((a, b) => a.order - b.order);

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 //https://stackoverflow.com/questions/37649164/how-to-add-bootstrap-to-an-angular-cli-project
 //import { AlertModule} from 'ng2-bootstrap';
 
-import {DynamicFormModule} from './forms/dynamic-form/dynamic-form.module';
+import { DynamicFormModule } from './forms/dynamic-form/dynamic-form.module';
 
 
 @NgModule({

@@ -5,8 +5,8 @@
   <div [ngSwitch]="question.controlType">
 
     <!--Texbox-->
-    <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
-            [id]="question.key" [type]="question.type" class="form-control"/>
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type" class="form-control"
+    />
 
     <!--Dropdown -->
     <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key" class="form-control">
@@ -14,15 +14,24 @@
     </select>
 
     <!--Checkbox -->
-    <input [id]="question.key" 
-      *ngSwitchCase="'checkbox'" 
-      [formControlName]="question.key" 
-      [name]="question.key" 
-      [checked]='question.checked' 
-      [type]="question.controlType" class="form-check"
-      (change)="toggleCheckBox($event, question.key)"/>
+    <input [id]="question.key" [id]="question.key" *ngSwitchCase="'checkbox'" [formControlName]="question.key" [name]="question.key"
+      [checked]='question.checked' [type]="question.controlType" class="form-check" (change)="toggleCheckBox($event, question.key)"
+    />
+
+    <!--Multi Checkbox-->
+    <div *ngSwitchCase="'multi-checkbox'">
+      <div [id]="option.key" class="form-check" *ngFor="let option of question.options">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [checked]="option.checked" (change)="toggleMultiCheckbox($event, question.key, option.key)">
+        {{option.value}}
+        </label>
+      </div>
+
+    </div>
+
   </div>
-  
+
+
   <div class="form-control-feedback">
     <div *ngFor="let error of errors">
       {{error}}&nbsp;
@@ -32,6 +41,6 @@
 
 
 
-  
-   
+
+
 </div>
